@@ -8,19 +8,19 @@ You can quickly try out the [**demo**](https://codesandbox.io/s/usetilg-3kdtz8?f
 
 ## Table of Contents
 
-- Installation
-- Features
-  - Lifecycle Events (What)
-  - Component Name and Props (Who)
-  - Debug Message (Why)
-  - What Has Changed? (Why)
-  - Quick Logs (Why)
-- Advanced Features
-  - Markdown
-  - Return Original Value
-  - Auto Deduplication
-  - CLI Support
-- FAQ & Caveats
+- [Installation](#installation)
+- [Features](#features)
+  - [Lifecycle Events (What)](#1-lifecycle-events-what)
+  - [Component Name and Props (Who)](#2-component-name-and-props-who)
+  - [Debug Message (Why)](#3-debug-message-why)
+  - [What Has Changed? (Why)](#4-what-has-changed-why)
+  - [Quick Logs (Why)](#5-quick-logs-why)
+- [Advanced Features](#advanced-features)
+  - [Markdown](#markdown)
+  - [Return Original Value](#return-original-value)
+  - [Auto Deduplication](#auto-deduplication)
+  - [CLI Support](#cli-support)
+- [FAQ & Caveats](#faq--caveats)
 
 <br/>
 
