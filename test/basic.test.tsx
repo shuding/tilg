@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest'
 
 import { spyConsole } from './utils'
 
-import useTilg from '../src'
+import useTilg from '../src/development'
 
 describe('useTilg', () => {
   it('should log the render, mount and unmount events', async () => {
@@ -74,7 +74,7 @@ describe('useTilg', () => {
     expect(logs[1][0]).toContain('The answer is "42"')
   })
 
-  it.only('should log object arguments', async () => {
+  it('should log object arguments', async () => {
     const [logs, reset] = spyConsole()
 
     function App() {
