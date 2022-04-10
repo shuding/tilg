@@ -112,7 +112,7 @@ function Counter() {
 }
 ```
 
-When appending a [template literal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) after the `useTilg()` call, it will also log it as the debug message:
+When appending a [template literal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) to the `useTilg()` call, it will also be displayed as the debug message:
 
 ```jsx
 useTilg()`count = ${count}`
@@ -124,7 +124,7 @@ useTilg()`count = ${count}`
   <i>Logs of “count = ?”.</i>
 </p>
 
-You can also know where the message is from:
+You can know where the message is from, too:
 
 <p align=center>
   <img width="650" alt="trace" src="/screenshots/trace.png">
@@ -291,11 +291,14 @@ function App() {
 
 ## FAQ & Caveats
 
-- **Is it safe to ship code with `useTilg` to production?**
+- **Is it safe to ship code with `useTilg` to production?**  
   Although `useTilg()` does nothing in a production build (`process.env.NODE_ENV === 'production'`) but only an empty function, I encourge you to remove the hook from the source code after finishing development your component.
 
-- **How do you implement this hook? What can I learn from the code?**
+- **How do you implement this hook? What can I learn from the code?**  
   It is very hacky. Don't rely on it or try it in production, or [you will be fired](https://github.com/facebook/react/blob/0568c0f8cde4ac6657dff9a5a8a7112acc35a748/packages/react/index.js#L35).
+  
+- **Why not design the API as `` useTilg`message` ``?**  
+  Then it will not be identified as a hook, React Refresh and HMR will not work correctly.
 
 <br/>
 
