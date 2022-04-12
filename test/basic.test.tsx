@@ -20,7 +20,7 @@ describe('useTilg', () => {
     reset()
 
     expect(logs[0][0]).toEqual(
-      '\x1B[96m\x1B[1m<App/>\x1B[39m\x1B[22m rendered. Props: \x1B[96m\x1B[1m%o\x1B[39m\x1B[22m'
+      '\x1B[96m\x1B[1m<App/>\x1B[39m\x1B[22m rendered with props: \x1B[96m\x1B[1m%o\x1B[39m\x1B[22m.'
     )
     expect(logs[0][1]).toEqual({})
     expect(logs[1][0]).toEqual('\x1B[96m\x1B[1m<App/>\x1B[39m\x1B[22m mounted.')

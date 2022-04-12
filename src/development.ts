@@ -10,7 +10,9 @@ function inIframe() {
   }
 }
 
-const IS_BROWSER = typeof window !== 'undefined'
+const IS_BROWSER = 
+  typeof window !== 'undefined' && 
+  window.navigator.product === 'Gecko'
 const IS_UNSUPPORTED_CONSOLE =
   IS_BROWSER &&
   /(\.stackblitz\.io|\.csb\.app)$/.test(location.host) &&
