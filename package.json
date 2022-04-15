@@ -1,6 +1,6 @@
 {
   "name": "tilg",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A tiny logger hook for debugging React components.",
   "keywords": [
     "react",
