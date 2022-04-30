@@ -25,7 +25,6 @@ const IS_UNSUPPORTED_CONSOLE =
 const SEPARATOR = /[-–—!$%^&*()_+|~=`{}\[\]:\/\\"'“”‘’;<>?,.@#\s\n\t\r]$/
 function md(strings, args = [], hints = {}, trace = '') {
   const disableStyling =
-    IS_BROWSER &&
     IS_UNSUPPORTED_CONSOLE &&
     args.some((arg) => {
       return typeof arg === 'function' || (arg && typeof arg === 'object')
