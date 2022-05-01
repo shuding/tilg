@@ -39,8 +39,8 @@ function md(strings, args = [], hints = {}, trace = '') {
 
   function setStylesAndFormatted(
     type: string,
-    value:string,
-    tokenType:boolean
+    value: string,
+    tokenType: boolean
   ) {
     if (!disableStyling) {
       if (IS_BROWSER) {
