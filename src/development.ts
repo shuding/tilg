@@ -37,6 +37,31 @@ function md(strings, args = [], hints = {}, trace = '') {
   const result = []
   const styles = []
 
+  function setStylesAndFormatted(
+    type: string,
+    value:string,
+    tokenType:boolean
+  ) {
+    if (!disableStyling) {
+      if (IS_BROWSER) {
+        if (formatted.endsWith('%c')) {
+          styles[styles.length - 1] += value
+        } else {
+          formatted += '%c'
+          styles.push(value)
+        }
+      } else {
+        formatted += value
+      }
+    }
+    tokens[type] = tokenType
+    char = undefined
+  }
+
+  function checkNextOrPrev(value: string | undefined) {
+    return typeof value === 'undefined' || SEPARATOR.test(value)
+  }
+
   function process(
     type: string,
     open: string,
@@ -44,39 +69,10 @@ function md(strings, args = [], hints = {}, trace = '') {
     next?: string | undefined,
     prev?: string | undefined
   ) {
-    if (tokens[type] && (typeof next === 'undefined' || SEPARATOR.test(next))) {
-      if (!disableStyling) {
-        if (IS_BROWSER) {
-          if (formatted.endsWith('%c')) {
-            styles[styles.length - 1] += close
-          } else {
-            formatted += '%c'
-            styles.push(close)
-          }
-        } else {
-          formatted += close
-        }
-      }
-      tokens[type] = false
-      char = undefined
-    } else if (
-      !tokens[type] &&
-      (typeof prev === 'undefined' || SEPARATOR.test(prev))
-    ) {
-      if (!disableStyling) {
-        if (IS_BROWSER) {
-          if (formatted.endsWith('%c')) {
-            styles[styles.length - 1] += open
-          } else {
-            formatted += '%c'
-            styles.push(open)
-          }
-        } else {
-          formatted += open
-        }
-      }
-      tokens[type] = true
-      char = undefined
+    if (tokens[type] && checkNextOrPrev(next)) {
+      setStylesAndFormatted(type, close, false)
+    } else if (!tokens[type] && checkNextOrPrev(prev)) {
+      setStylesAndFormatted(type, open, true)
     } else {
       char = type
     }
