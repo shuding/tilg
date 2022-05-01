@@ -10,8 +10,8 @@ function inIframe() {
   }
 }
 
-const IS_BROWSER = 
-  typeof window !== 'undefined' && 
+const IS_BROWSER =
+  typeof window !== 'undefined' &&
   window.navigator.product === 'Gecko'
 const IS_UNSUPPORTED_CONSOLE =
   IS_BROWSER &&
@@ -41,8 +41,8 @@ function md(strings, args = [], hints = {}, trace = '') {
     type: string,
     open: string,
     close: string,
-    next?: string | undefined,
-    prev?: string | undefined
+    next?: string,
+    prev?: string
   ) {
     if (tokens[type] && (typeof next === 'undefined' || SEPARATOR.test(next))) {
       if (!disableStyling) {
@@ -188,7 +188,7 @@ function md(strings, args = [], hints = {}, trace = '') {
       }
 
       if (hasNextSlot) {
-        let serailized
+        let serialized
         if (
           args[i] &&
           (typeof args[i] === 'object' || typeof args[i] === 'function')
@@ -197,11 +197,11 @@ function md(strings, args = [], hints = {}, trace = '') {
           styles.push(args[i])
         } else {
           try {
-            serailized = JSON.stringify(args[i])
+            serialized = JSON.stringify(args[i])
           } catch (e) {
-            serailized = '' + args[i]
+            serialized = '' + args[i]
           }
-          result[result.length - 1] += serailized
+          result[result.length - 1] += serialized
         }
       }
 
@@ -300,12 +300,7 @@ export default function useTilg(...inlined: any[]) {
       hooks.push(hookPath)
     }
 
-    let componentName = name
-    if (name) {
-      componentName = '`<' + name + '/>`'
-    } else {
-      componentName = 'Component'
-    }
+    const componentName = name ? '`<' + name + '/>`' : 'Component'
 
     // Only log the life cycle message for the first hook.
     if (hookId !== 0) return [componentName, hookId, 0]
